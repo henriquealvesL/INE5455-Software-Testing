@@ -29,3 +29,9 @@ def test_6_create_company_project(company):
   project_name = company.projects[0].name
   assert project_name == "Calculator App"
 
+def test_7_company_add_employee_to_project(company):
+  employee = company.create_employee("João")
+  project = company.create_project("Calculator App")
+  company.add_employee_to_project(employee, project)
+  member_name = project.members[0].name
+  assert member_name == "João"

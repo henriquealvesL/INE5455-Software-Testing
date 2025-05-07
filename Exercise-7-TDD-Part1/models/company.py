@@ -11,6 +11,16 @@ class Company():
     employee = Employee(name, company=self)
     self.employees.append(employee)
 
+    return employee
+
   def create_project(self, name):
     project = Project(name, company=self)
     self.projects.append(project)
+
+    return project
+
+  def add_employee_to_project(self, employee, project):
+    if project not in self.projects:
+      raise ValueError("The project does not exist in the company.")
+    
+    project.add_member(employee)
