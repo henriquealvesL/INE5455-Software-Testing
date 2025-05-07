@@ -1,6 +1,7 @@
 import pytest
 
 from models.company import Company
+from models.employee import Employee
 
 def test_1_create_company_w():
   company_w = Company("W's SA")
@@ -14,4 +15,8 @@ def test_3_create_company_employee(company):
   company.create_employee("João")
   employee_name = company.employees[0].name
   assert employee_name == "João"
+
+def test_4_create_employee_without_name():
+  with pytest.raises(Exception):
+    Employee()
 
