@@ -2,6 +2,7 @@ import pytest
 
 from models.company import Company
 from models.employee import Employee
+from models.project import Project
 
 def test_1_create_company_w():
   company_w = Company("W's SA")
@@ -35,3 +36,12 @@ def test_7_company_add_employee_to_project(company):
   company.add_employee_to_project(employee, project)
   member_name = project.members[0].name
   assert member_name == "João"
+
+def test_7_company_add_employee_to_non_existent_project(company):
+  company_b = Company("B's SA")
+  employee = company.create_employee("João")
+  project = Project("Delivery app", company_b)
+
+  with pytest.raises(Exception):
+    company.add_employee_to_project(employee, project)
+
