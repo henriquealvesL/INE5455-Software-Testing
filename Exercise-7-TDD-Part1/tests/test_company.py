@@ -24,3 +24,8 @@ def test_5_create_employee_without_company():
   with pytest.raises(Exception):
     Employee("João")
 
+def test_6_criar_projeto(company):
+  company.create_project("Calculator App")
+  project_name = company.projects[0].name
+  assert project_name == "Calculator Appp"
+
