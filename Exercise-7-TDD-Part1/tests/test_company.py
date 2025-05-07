@@ -76,4 +76,10 @@ def test_12_add_multiple_projects_to_employee(company_with_projects):
   
   assert len(employee.projects) == 2
 
+def test_13_add_multiple_members_to_project(company_with_projects, employee_joao):
+  employee = company_with_projects.create_employee("Matheus")
+  project = company_with_projects.projects[0]
+  project.add_member(employee)
+  project.add_member(employee_joao)
 
+  assert len(project.members) == 2
