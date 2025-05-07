@@ -60,4 +60,13 @@ def test_10_create_3_employees(company):
   assert company.employees[0].name == "João"
   assert company.employees[2].name == "Carlos"
 
+def test_11_create_3_projects(company):
+  company.create_project("Calculator App")
+  company.create_project("CRM")
+  company.create_project("E-Commerce")
+
+  assert len(company.projects) == 3
+  assert company.projects[0].name == "Calculator App"
+  assert company.projects[2].name == "E-Commerce"
+
 
