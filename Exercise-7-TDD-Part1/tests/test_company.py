@@ -20,3 +20,7 @@ def test_4_create_employee_without_name():
   with pytest.raises(Exception):
     Employee()
 
+def test_5_create_employee_without_company():
+  with pytest.raises(Exception):
+    Employee("João")
+
