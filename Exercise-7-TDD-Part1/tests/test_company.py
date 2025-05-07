@@ -37,7 +37,7 @@ def test_7_company_add_employee_to_project(company):
   member_name = project.members[0].name
   assert member_name == "João"
 
-def test_7_company_add_employee_to_non_existent_project(company):
+def test_8_company_add_employee_to_non_existent_project(company):
   company_b = Company("B's SA")
   employee = company.create_employee("João")
   project = Project("Delivery app", company_b)
@@ -45,7 +45,7 @@ def test_7_company_add_employee_to_non_existent_project(company):
   with pytest.raises(Exception):
     company.add_employee_to_project(employee, project)
 
-def test_8_get_employee_projects(company, employee_joao):
+def test_9_get_employee_projects(company, employee_joao):
   project = company.create_project("Calculator_app")
   company.add_employee_to_project(employee_joao, project)
   employee_projects = employee_joao.get_projects()
