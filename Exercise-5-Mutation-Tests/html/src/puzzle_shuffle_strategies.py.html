@@ -1,0 +1,1210 @@
+<html><body><h1>src/puzzle_shuffle_strategies.py</h1>Killed 0 out of 111 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 182</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -3,7 +3,7 @@
+ class ShufflePuzzleLevelCustomized:
+ 
+     def __init__(self, number_of_shuffles):
+-        self.number_of_shuffles = number_of_shuffles;
++        self.number_of_shuffles = None;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 183</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -6,7 +6,7 @@
+         self.number_of_shuffles = number_of_shuffles;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [2, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 184</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -6,7 +6,7 @@
+         self.number_of_shuffles = number_of_shuffles;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 3, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 185</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -6,7 +6,7 @@
+         self.number_of_shuffles = number_of_shuffles;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 4, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 186</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -6,7 +6,7 @@
+         self.number_of_shuffles = number_of_shuffles;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 3, 5]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 187</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -6,7 +6,7 @@
+         self.number_of_shuffles = number_of_shuffles;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = None
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 188</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -7,7 +7,7 @@
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+-        for number in range(0, self.number_of_shuffles):
++        for number in range(1, self.number_of_shuffles):
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+</pre><h3>Mutant 189</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -8,7 +8,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = True
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 190</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -8,7 +8,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = None
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 191</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -9,7 +9,7 @@
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+-            while not changed:
++            while  changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+</pre><h3>Mutant 192</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -10,7 +10,7 @@
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+-                direction = random.choice(list_directions)
++                direction = None
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+</pre><h3>Mutant 193</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -11,7 +11,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction != 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 194</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -11,7 +11,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction == 2:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 195</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -12,7 +12,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = puzzle_game.move_empty_tile("XXUPXX")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 196</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -12,7 +12,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = None
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 197</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -13,7 +13,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction != 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 198</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -13,7 +13,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 199</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -14,7 +14,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = puzzle_game.move_empty_tile("XXDOWNXX")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 200</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -14,7 +14,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = None
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 201</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -15,7 +15,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction != 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 202</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -15,7 +15,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 203</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -16,7 +16,7 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = puzzle_game.move_empty_tile("XXLEFTXX")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+</pre><h3>Mutant 204</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -16,7 +16,7 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = None
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+</pre><h3>Mutant 205</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -17,7 +17,7 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction != 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+ 
+</pre><h3>Mutant 206</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -17,7 +17,7 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction == 5:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+ 
+</pre><h3>Mutant 207</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -18,7 +18,7 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = puzzle_game.move_empty_tile("XXRIGHTXX")
+ 
+ 
+ class ShufflePuzzleLevelEasy:
+</pre><h3>Mutant 208</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -18,7 +18,7 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = None
+ 
+ 
+ class ShufflePuzzleLevelEasy:
+</pre><h3>Mutant 209</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -24,7 +24,7 @@
+ class ShufflePuzzleLevelEasy:
+ 
+     def __init__(self):
+-        self.number_of_shuffles = 4;
++        self.number_of_shuffles = 5;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 210</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -24,7 +24,7 @@
+ class ShufflePuzzleLevelEasy:
+ 
+     def __init__(self):
+-        self.number_of_shuffles = 4;
++        self.number_of_shuffles = None;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 211</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -27,7 +27,7 @@
+         self.number_of_shuffles = 4;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [2, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 212</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -27,7 +27,7 @@
+         self.number_of_shuffles = 4;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 3, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 213</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -27,7 +27,7 @@
+         self.number_of_shuffles = 4;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 4, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 214</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -27,7 +27,7 @@
+         self.number_of_shuffles = 4;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 3, 5]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 215</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -27,7 +27,7 @@
+         self.number_of_shuffles = 4;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = None
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 216</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -28,7 +28,7 @@
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+-        for number in range(0, self.number_of_shuffles):
++        for number in range(1, self.number_of_shuffles):
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+</pre><h3>Mutant 217</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -29,7 +29,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = True
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 218</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -29,7 +29,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = None
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 219</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -30,7 +30,7 @@
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+-            while not changed:
++            while  changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+</pre><h3>Mutant 220</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -31,7 +31,7 @@
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+-                direction = random.choice(list_directions)
++                direction = None
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+</pre><h3>Mutant 221</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -32,7 +32,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction != 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 222</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -32,7 +32,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction == 2:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 223</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -33,7 +33,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = puzzle_game.move_empty_tile("XXUPXX")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 224</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -33,7 +33,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = None
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 225</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -34,7 +34,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction != 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 226</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -34,7 +34,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 227</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -35,7 +35,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = puzzle_game.move_empty_tile("XXDOWNXX")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 228</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -35,7 +35,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = None
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 229</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -36,7 +36,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction != 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 230</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -36,7 +36,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 231</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -37,7 +37,7 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = puzzle_game.move_empty_tile("XXLEFTXX")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+</pre><h3>Mutant 232</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -37,7 +37,7 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = None
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+</pre><h3>Mutant 233</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -38,7 +38,7 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction != 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+ 
+</pre><h3>Mutant 234</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -38,7 +38,7 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction == 5:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+ 
+</pre><h3>Mutant 235</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -39,7 +39,7 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = puzzle_game.move_empty_tile("XXRIGHTXX")
+ 
+ 
+ class ShufflePuzzleLevelMedium:
+</pre><h3>Mutant 236</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -39,7 +39,7 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = None
+ 
+ 
+ class ShufflePuzzleLevelMedium:
+</pre><h3>Mutant 237</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -45,7 +45,7 @@
+ class ShufflePuzzleLevelMedium:
+ 
+     def __init__(self):
+-        self.number_of_shuffles = 10;
++        self.number_of_shuffles = 11;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 238</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -45,7 +45,7 @@
+ class ShufflePuzzleLevelMedium:
+ 
+     def __init__(self):
+-        self.number_of_shuffles = 10;
++        self.number_of_shuffles = None;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 239</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -48,7 +48,7 @@
+         self.number_of_shuffles = 10;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [2, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 240</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -48,7 +48,7 @@
+         self.number_of_shuffles = 10;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 3, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 241</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -48,7 +48,7 @@
+         self.number_of_shuffles = 10;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 4, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 242</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -48,7 +48,7 @@
+         self.number_of_shuffles = 10;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 3, 5]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 243</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -48,7 +48,7 @@
+         self.number_of_shuffles = 10;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = None
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 244</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -49,7 +49,7 @@
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+-        for number in range(0, self.number_of_shuffles):
++        for number in range(1, self.number_of_shuffles):
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+</pre><h3>Mutant 245</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -50,7 +50,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = True
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 246</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -50,7 +50,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = None
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 247</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -51,7 +51,7 @@
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+-            while not changed:
++            while  changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+</pre><h3>Mutant 248</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -52,7 +52,7 @@
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+-                direction = random.choice(list_directions)
++                direction = None
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+</pre><h3>Mutant 249</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -53,7 +53,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction != 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 250</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -53,7 +53,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction == 2:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 251</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -54,7 +54,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = puzzle_game.move_empty_tile("XXUPXX")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 252</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -54,7 +54,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = None
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 253</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -55,7 +55,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction != 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 254</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -55,7 +55,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 255</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -56,7 +56,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = puzzle_game.move_empty_tile("XXDOWNXX")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 256</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -56,7 +56,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = None
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 257</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -57,7 +57,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction != 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 258</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -57,7 +57,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 259</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -58,7 +58,7 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = puzzle_game.move_empty_tile("XXLEFTXX")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+</pre><h3>Mutant 260</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -58,7 +58,7 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = None
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+</pre><h3>Mutant 261</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -59,7 +59,7 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction != 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+ 
+</pre><h3>Mutant 262</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -59,7 +59,7 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction == 5:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+ 
+ 
+</pre><h3>Mutant 263</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -60,7 +60,7 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = puzzle_game.move_empty_tile("XXRIGHTXX")
+ 
+ 
+ class ShufflePuzzleLevelHard:
+</pre><h3>Mutant 264</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -60,7 +60,7 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = None
+ 
+ 
+ class ShufflePuzzleLevelHard:
+</pre><h3>Mutant 265</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -66,7 +66,7 @@
+ class ShufflePuzzleLevelHard:
+ 
+     def __init__(self):
+-        self.number_of_shuffles = 30;
++        self.number_of_shuffles = 31;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 266</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -66,7 +66,7 @@
+ class ShufflePuzzleLevelHard:
+ 
+     def __init__(self):
+-        self.number_of_shuffles = 30;
++        self.number_of_shuffles = None;
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+</pre><h3>Mutant 267</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -69,7 +69,7 @@
+         self.number_of_shuffles = 30;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [2, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 268</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -69,7 +69,7 @@
+         self.number_of_shuffles = 30;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 3, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 269</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -69,7 +69,7 @@
+         self.number_of_shuffles = 30;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 4, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 270</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -69,7 +69,7 @@
+         self.number_of_shuffles = 30;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = [1, 2, 3, 5]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 271</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -69,7 +69,7 @@
+         self.number_of_shuffles = 30;
+ 
+     def shuffle (self, puzzle_game):
+-        list_directions = [1, 2, 3, 4]
++        list_directions = None
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+</pre><h3>Mutant 272</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -70,7 +70,7 @@
+ 
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+-        for number in range(0, self.number_of_shuffles):
++        for number in range(1, self.number_of_shuffles):
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+</pre><h3>Mutant 273</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -71,7 +71,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = True
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 274</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -71,7 +71,7 @@
+     def shuffle (self, puzzle_game):
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+-            changed = False
++            changed = None
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+</pre><h3>Mutant 275</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -72,7 +72,7 @@
+         list_directions = [1, 2, 3, 4]
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+-            while not changed:
++            while  changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+</pre><h3>Mutant 276</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -73,7 +73,7 @@
+         for number in range(0, self.number_of_shuffles):
+             changed = False
+             while not changed:
+-                direction = random.choice(list_directions)
++                direction = None
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+</pre><h3>Mutant 277</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -74,7 +74,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction != 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 278</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -74,7 +74,7 @@
+             changed = False
+             while not changed:
+                 direction = random.choice(list_directions)
+-                if direction == 1:
++                if direction == 2:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+</pre><h3>Mutant 279</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -75,7 +75,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = puzzle_game.move_empty_tile("XXUPXX")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 280</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -75,7 +75,7 @@
+             while not changed:
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+-                    changed = puzzle_game.move_empty_tile("UP")
++                    changed = None
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+</pre><h3>Mutant 281</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -76,7 +76,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction != 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 282</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -76,7 +76,7 @@
+                 direction = random.choice(list_directions)
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+-                elif direction == 2:
++                elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+</pre><h3>Mutant 283</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -77,7 +77,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = puzzle_game.move_empty_tile("XXDOWNXX")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 284</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -77,7 +77,7 @@
+                 if direction == 1:
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+-                    changed = puzzle_game.move_empty_tile("DOWN")
++                    changed = None
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+</pre><h3>Mutant 285</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -78,7 +78,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction != 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 286</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -78,7 +78,7 @@
+                     changed = puzzle_game.move_empty_tile("UP")
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+-                elif direction == 3:
++                elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 287</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -79,6 +79,6 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = puzzle_game.move_empty_tile("XXLEFTXX")
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 288</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -79,6 +79,6 @@
+                 elif direction == 2:
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+-                    changed = puzzle_game.move_empty_tile("LEFT")
++                    changed = None
+                 elif direction == 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 289</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -80,5 +80,5 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction != 4:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 290</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -80,5 +80,5 @@
+                     changed = puzzle_game.move_empty_tile("DOWN")
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+-                elif direction == 4:
++                elif direction == 5:
+                     changed = puzzle_game.move_empty_tile("RIGHT")
+</pre><h3>Mutant 291</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -81,4 +81,4 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = puzzle_game.move_empty_tile("XXRIGHTXX")
+</pre><h3>Mutant 292</h3><pre>--- src/puzzle_shuffle_strategies.py
++++ src/puzzle_shuffle_strategies.py
+@@ -81,4 +81,4 @@
+                 elif direction == 3:
+                     changed = puzzle_game.move_empty_tile("LEFT")
+                 elif direction == 4:
+-                    changed = puzzle_game.move_empty_tile("RIGHT")
++                    changed = None
+</pre></body></html>

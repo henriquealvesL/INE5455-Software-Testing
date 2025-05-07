@@ -1,0 +1,5 @@
+[mutmut]
+paths_to_mutate=src/puzzle_game.py
+backup=False
+runner=python -m unittest proj1  tests/
+tests_dir=tests/

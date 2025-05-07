@@ -1,0 +1,584 @@
+<html><body><h1>src/board.py</h1>Killed 20 out of 73 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 17</h3><pre>--- src/board.py
++++ src/board.py
+@@ -37,7 +37,7 @@
+         return None
+ 
+     def is_inside_the_board(self, line, column):
+-        return line > 0 and line <= self.__number_of_lines and column > 0 and column <= self.number_of_columns
++        return line >= 0 and line <= self.__number_of_lines and column > 0 and column <= self.number_of_columns
+ 
+     def change_tiles_in_positions(self, line1, column1, line2, column2):
+         if self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2):
+</pre><h3>Mutant 20</h3><pre>--- src/board.py
++++ src/board.py
+@@ -37,7 +37,7 @@
+         return None
+ 
+     def is_inside_the_board(self, line, column):
+-        return line > 0 and line <= self.__number_of_lines and column > 0 and column <= self.number_of_columns
++        return line > 0 and line <= self.__number_of_lines and column >= 0 and column <= self.number_of_columns
+ 
+     def change_tiles_in_positions(self, line1, column1, line2, column2):
+         if self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2):
+</pre><h3>Mutant 23</h3><pre>--- src/board.py
++++ src/board.py
+@@ -37,7 +37,7 @@
+         return None
+ 
+     def is_inside_the_board(self, line, column):
+-        return line > 0 and line <= self.__number_of_lines and column > 0 and column <= self.number_of_columns
++        return line > 0 or line <= self.__number_of_lines and column > 0 and column <= self.number_of_columns
+ 
+     def change_tiles_in_positions(self, line1, column1, line2, column2):
+         if self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2):
+</pre><h3>Mutant 24</h3><pre>--- src/board.py
++++ src/board.py
+@@ -40,7 +40,7 @@
+         return line > 0 and line <= self.__number_of_lines and column > 0 and column <= self.number_of_columns
+ 
+     def change_tiles_in_positions(self, line1, column1, line2, column2):
+-        if self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2):
++        if self.is_inside_the_board(line1, column1) or self.is_inside_the_board(line2, column2):
+             tile1 = self.get_tile(line1, column1)
+             tile2 = self.get_tile(line2, column2)
+             self.put_tile(tile2, line1, column1)
+</pre><h3>Mutant 25</h3><pre>--- src/board.py
++++ src/board.py
+@@ -41,7 +41,7 @@
+ 
+     def change_tiles_in_positions(self, line1, column1, line2, column2):
+         if self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2):
+-            tile1 = self.get_tile(line1, column1)
++            tile1 = None
+             tile2 = self.get_tile(line2, column2)
+             self.put_tile(tile2, line1, column1)
+             self.put_tile(tile1, line2, column2)
+</pre><h3>Mutant 26</h3><pre>--- src/board.py
++++ src/board.py
+@@ -42,7 +42,7 @@
+     def change_tiles_in_positions(self, line1, column1, line2, column2):
+         if self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2):
+             tile1 = self.get_tile(line1, column1)
+-            tile2 = self.get_tile(line2, column2)
++            tile2 = None
+             self.put_tile(tile2, line1, column1)
+             self.put_tile(tile1, line2, column2)
+         else:
+</pre><h3>Mutant 27</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 != line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 28</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1+column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 29</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) != 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 30</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 2) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 31</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 or abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 32</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 != column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 33</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1+line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 34</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) != 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 35</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 2))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 36</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 or abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 37</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) and (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 38</h3><pre>--- src/board.py
++++ src/board.py
+@@ -49,7 +49,7 @@
+             raise InvalidPositionException()
+ 
+     def positions_are_adjacent(self, line1, column1, line2, column2):
+-        return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
++        return self.is_inside_the_board(line1, column1) or self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == 1
+</pre><h3>Mutant 39</h3><pre>--- src/board.py
++++ src/board.py
+@@ -52,7 +52,7 @@
+         return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and line == 1
++        return self.is_inside_the_board(line, column) and line != 1
+ 
+     def is_in_the_bottom_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == self.__number_of_lines
+</pre><h3>Mutant 40</h3><pre>--- src/board.py
++++ src/board.py
+@@ -52,7 +52,7 @@
+         return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and line == 1
++        return self.is_inside_the_board(line, column) and line == 2
+ 
+     def is_in_the_bottom_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == self.__number_of_lines
+</pre><h3>Mutant 41</h3><pre>--- src/board.py
++++ src/board.py
+@@ -52,7 +52,7 @@
+         return self.is_inside_the_board(line1, column1) and self.is_inside_the_board(line2, column2) and ((line1 == line2 and abs(column1-column2) == 1) or (column1 == column2 and abs(line1-line2) == 1))
+ 
+     def is_in_the_superior_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and line == 1
++        return self.is_inside_the_board(line, column) or line == 1
+ 
+     def is_in_the_bottom_border(self, line, column):
+         return self.is_inside_the_board(line, column) and line == self.__number_of_lines
+</pre><h3>Mutant 42</h3><pre>--- src/board.py
++++ src/board.py
+@@ -55,7 +55,7 @@
+         return self.is_inside_the_board(line, column) and line == 1
+ 
+     def is_in_the_bottom_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and line == self.__number_of_lines
++        return self.is_inside_the_board(line, column) and line != self.__number_of_lines
+ 
+     def is_in_the_left_border(self, line, column):
+         return self.is_inside_the_board(line, column) and column == 1
+</pre><h3>Mutant 43</h3><pre>--- src/board.py
++++ src/board.py
+@@ -55,7 +55,7 @@
+         return self.is_inside_the_board(line, column) and line == 1
+ 
+     def is_in_the_bottom_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and line == self.__number_of_lines
++        return self.is_inside_the_board(line, column) or line == self.__number_of_lines
+ 
+     def is_in_the_left_border(self, line, column):
+         return self.is_inside_the_board(line, column) and column == 1
+</pre><h3>Mutant 44</h3><pre>--- src/board.py
++++ src/board.py
+@@ -58,7 +58,7 @@
+         return self.is_inside_the_board(line, column) and line == self.__number_of_lines
+ 
+     def is_in_the_left_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and column == 1
++        return self.is_inside_the_board(line, column) and column != 1
+ 
+     def is_in_the_right_border(self, line, column):
+         return self.is_inside_the_board(line, column) and column == self.number_of_columns
+</pre><h3>Mutant 45</h3><pre>--- src/board.py
++++ src/board.py
+@@ -58,7 +58,7 @@
+         return self.is_inside_the_board(line, column) and line == self.__number_of_lines
+ 
+     def is_in_the_left_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and column == 1
++        return self.is_inside_the_board(line, column) and column == 2
+ 
+     def is_in_the_right_border(self, line, column):
+         return self.is_inside_the_board(line, column) and column == self.number_of_columns
+</pre><h3>Mutant 46</h3><pre>--- src/board.py
++++ src/board.py
+@@ -58,7 +58,7 @@
+         return self.is_inside_the_board(line, column) and line == self.__number_of_lines
+ 
+     def is_in_the_left_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and column == 1
++        return self.is_inside_the_board(line, column) or column == 1
+ 
+     def is_in_the_right_border(self, line, column):
+         return self.is_inside_the_board(line, column) and column == self.number_of_columns
+</pre><h3>Mutant 47</h3><pre>--- src/board.py
++++ src/board.py
+@@ -61,7 +61,7 @@
+         return self.is_inside_the_board(line, column) and column == 1
+ 
+     def is_in_the_right_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and column == self.number_of_columns
++        return self.is_inside_the_board(line, column) and column != self.number_of_columns
+ 
+     def __eq__(self, other):
+         if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
+</pre><h3>Mutant 48</h3><pre>--- src/board.py
++++ src/board.py
+@@ -61,7 +61,7 @@
+         return self.is_inside_the_board(line, column) and column == 1
+ 
+     def is_in_the_right_border(self, line, column):
+-        return self.is_inside_the_board(line, column) and column == self.number_of_columns
++        return self.is_inside_the_board(line, column) or column == self.number_of_columns
+ 
+     def __eq__(self, other):
+         if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
+</pre><h3>Mutant 49</h3><pre>--- src/board.py
++++ src/board.py
+@@ -64,7 +64,7 @@
+         return self.is_inside_the_board(line, column) and column == self.number_of_columns
+ 
+     def __eq__(self, other):
+-        if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
++        if (self.__number_of_lines == other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
+             return False
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+</pre><h3>Mutant 50</h3><pre>--- src/board.py
++++ src/board.py
+@@ -64,7 +64,7 @@
+         return self.is_inside_the_board(line, column) and column == self.number_of_columns
+ 
+     def __eq__(self, other):
+-        if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
++        if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns == other.number_of_columns):
+             return False
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+</pre><h3>Mutant 51</h3><pre>--- src/board.py
++++ src/board.py
+@@ -64,7 +64,7 @@
+         return self.is_inside_the_board(line, column) and column == self.number_of_columns
+ 
+     def __eq__(self, other):
+-        if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
++        if (self.__number_of_lines != other.__number_of_lines) and (self.number_of_columns != other.number_of_columns):
+             return False
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+</pre><h3>Mutant 52</h3><pre>--- src/board.py
++++ src/board.py
+@@ -65,7 +65,7 @@
+ 
+     def __eq__(self, other):
+         if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
+-            return False
++            return True
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 if not(self.grid[line][column] == other.grid[line][column]):
+</pre><h3>Mutant 53</h3><pre>--- src/board.py
++++ src/board.py
+@@ -66,7 +66,7 @@
+     def __eq__(self, other):
+         if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
+             return False
+-        for line in range(0, self.__number_of_lines):
++        for line in range(1, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 if not(self.grid[line][column] == other.grid[line][column]):
+                     return False
+</pre><h3>Mutant 54</h3><pre>--- src/board.py
++++ src/board.py
+@@ -67,7 +67,7 @@
+         if (self.__number_of_lines != other.__number_of_lines) or (self.number_of_columns != other.number_of_columns):
+             return False
+         for line in range(0, self.__number_of_lines):
+-            for column in range(0, self.number_of_columns):
++            for column in range(1, self.number_of_columns):
+                 if not(self.grid[line][column] == other.grid[line][column]):
+                     return False
+         return True
+</pre><h3>Mutant 55</h3><pre>--- src/board.py
++++ src/board.py
+@@ -68,7 +68,7 @@
+             return False
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+-                if not(self.grid[line][column] == other.grid[line][column]):
++                if (self.grid[line][column] == other.grid[line][column]):
+                     return False
+         return True
+ 
+</pre><h3>Mutant 56</h3><pre>--- src/board.py
++++ src/board.py
+@@ -68,7 +68,7 @@
+             return False
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+-                if not(self.grid[line][column] == other.grid[line][column]):
++                if not(self.grid[line][column] != other.grid[line][column]):
+                     return False
+         return True
+ 
+</pre><h3>Mutant 57</h3><pre>--- src/board.py
++++ src/board.py
+@@ -69,7 +69,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 if not(self.grid[line][column] == other.grid[line][column]):
+-                    return False
++                    return True
+         return True
+ 
+     def __str__(self):
+</pre><h3>Mutant 58</h3><pre>--- src/board.py
++++ src/board.py
+@@ -70,7 +70,7 @@
+             for column in range(0, self.number_of_columns):
+                 if not(self.grid[line][column] == other.grid[line][column]):
+                     return False
+-        return True
++        return False
+ 
+     def __str__(self):
+         result = ""
+</pre><h3>Mutant 59</h3><pre>--- src/board.py
++++ src/board.py
+@@ -73,7 +73,7 @@
+         return True
+ 
+     def __str__(self):
+-        result = ""
++        result = "XXXX"
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+</pre><h3>Mutant 60</h3><pre>--- src/board.py
++++ src/board.py
+@@ -73,7 +73,7 @@
+         return True
+ 
+     def __str__(self):
+-        result = ""
++        result = None
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+</pre><h3>Mutant 61</h3><pre>--- src/board.py
++++ src/board.py
+@@ -74,7 +74,7 @@
+ 
+     def __str__(self):
+         result = ""
+-        for line in range(0, self.__number_of_lines):
++        for line in range(1, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+                 result += "({},{}):{}   ".format(line+1, column+1, value)
+</pre><h3>Mutant 62</h3><pre>--- src/board.py
++++ src/board.py
+@@ -75,7 +75,7 @@
+     def __str__(self):
+         result = ""
+         for line in range(0, self.__number_of_lines):
+-            for column in range(0, self.number_of_columns):
++            for column in range(1, self.number_of_columns):
+                 value = self.grid[line][column]
+                 result += "({},{}):{}   ".format(line+1, column+1, value)
+             result += "\n"
+</pre><h3>Mutant 63</h3><pre>--- src/board.py
++++ src/board.py
+@@ -76,7 +76,7 @@
+         result = ""
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+-                value = self.grid[line][column]
++                value = None
+                 result += "({},{}):{}   ".format(line+1, column+1, value)
+             result += "\n"
+         return result
+</pre><h3>Mutant 64</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result = "({},{}):{}   ".format(line+1, column+1, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 65</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result -= "({},{}):{}   ".format(line+1, column+1, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 66</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result += "XX({},{}):{}   XX".format(line+1, column+1, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 67</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result += "({},{}):{}   ".format(line-1, column+1, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 68</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result += "({},{}):{}   ".format(line+2, column+1, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 69</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result += "({},{}):{}   ".format(line+1, column-1, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 70</h3><pre>--- src/board.py
++++ src/board.py
+@@ -77,7 +77,7 @@
+         for line in range(0, self.__number_of_lines):
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+-                result += "({},{}):{}   ".format(line+1, column+1, value)
++                result += "({},{}):{}   ".format(line+1, column+2, value)
+             result += "\n"
+         return result
+ 
+</pre><h3>Mutant 71</h3><pre>--- src/board.py
++++ src/board.py
+@@ -78,7 +78,7 @@
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+                 result += "({},{}):{}   ".format(line+1, column+1, value)
+-            result += "\n"
++            result = "\n"
+         return result
+ 
+ 
+</pre><h3>Mutant 72</h3><pre>--- src/board.py
++++ src/board.py
+@@ -78,7 +78,7 @@
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+                 result += "({},{}):{}   ".format(line+1, column+1, value)
+-            result += "\n"
++            result -= "\n"
+         return result
+ 
+ 
+</pre><h3>Mutant 73</h3><pre>--- src/board.py
++++ src/board.py
+@@ -78,7 +78,7 @@
+             for column in range(0, self.number_of_columns):
+                 value = self.grid[line][column]
+                 result += "({},{}):{}   ".format(line+1, column+1, value)
+-            result += "\n"
++            result += "XX\nXX"
+         return result
+ 
+ 
+</pre></body></html>
