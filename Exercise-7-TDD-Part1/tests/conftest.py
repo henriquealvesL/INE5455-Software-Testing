@@ -10,3 +10,10 @@ def company():
 @pytest.fixture
 def employee_joao(company):
   return Employee("Joao", company)
+
+@pytest.fixture
+def company_with_projects():
+  company = Company("B's SA")
+  company.create_project("Calculator App")
+  company.create_project("CRM")
+  return company
