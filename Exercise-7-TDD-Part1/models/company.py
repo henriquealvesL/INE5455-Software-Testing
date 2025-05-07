@@ -23,4 +23,5 @@ class Company():
     if project not in self.projects:
       raise ValueError("The project does not exist in the company.")
     
+    employee.add_project(project)
     project.add_member(employee)
