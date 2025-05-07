@@ -69,4 +69,11 @@ def test_11_create_3_projects(company):
   assert company.projects[0].name == "Calculator App"
   assert company.projects[2].name == "E-Commerce"
 
+def test_12_add_multiple_projects_to_employee(company_with_projects):
+  employee = company_with_projects.create_employee("Matheus")
+  employee.add_project(company_with_projects.projects[0])
+  employee.add_project(company_with_projects.projects[1])
+  
+  assert len(employee.projects) == 2
+
 
