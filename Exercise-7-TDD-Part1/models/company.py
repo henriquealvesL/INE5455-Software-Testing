@@ -6,5 +6,5 @@ class Company():
     self.employees = []
 
   def create_employee(self, name):
-    employee = Employee(name)
+    employee = Employee(name, company=self)
     self.employees.append(employee)
