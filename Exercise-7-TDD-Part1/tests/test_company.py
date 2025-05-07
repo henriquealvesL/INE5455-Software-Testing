@@ -51,3 +51,13 @@ def test_9_get_employee_projects(company, employee_joao):
   employee_projects = employee_joao.get_projects()
   assert len(employee_projects) == 1
 
+def test_10_create_3_employees(company):    
+  company.create_employee("João")
+  company.create_employee("Maria")
+  company.create_employee("Carlos")
+  
+  assert len(company.employees) == 3
+  assert company.employees[0].name == "João"
+  assert company.employees[2].name == "Carlos"
+
+
