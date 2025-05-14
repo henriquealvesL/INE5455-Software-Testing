@@ -160,7 +160,7 @@ def test_20_verify_occcurrence_status_finish(company_with_projects):
   occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
   occurrence.add_responsible(employee)
   
-  occurrence.status = Status.FINISH
+  occurrence.change_status(Status.FINISH)
   
   assert occurrence.status == Status.FINISH
 
@@ -171,7 +171,7 @@ def test_21_verify_occcurrence_status_working(company_with_projects):
   occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
   occurrence.add_responsible(employee)
   
-  occurrence.status = Status.WORKING
+  occurrence.change_status(Status.WORKING)
   
   assert occurrence.status == Status.WORKING
 

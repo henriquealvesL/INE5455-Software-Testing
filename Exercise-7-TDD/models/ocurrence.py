@@ -26,6 +26,9 @@ class Occurrence:
     employee.add_occurrence(self)
     self.responsible = employee
 
+  def change_status(self, status):
+    self.status = status
+
 class Status(Enum):
   OPEN = "OPEN"
   FINISH = "FINISH"
