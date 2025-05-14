@@ -3,6 +3,7 @@ import pytest
 from models.company import Company
 from models.employee import Employee
 from models.project import Project
+from models.ocurrence import Status, Type, Priority
 
 def create_10_occurrences(company, project, employee):
   occurrences = []
@@ -142,3 +143,89 @@ def test_18_add_eleventh_occurrence_to_employee(company_with_projects):
   
   with pytest.raises(Exception):
     employee.add_occurrence(occurrence_11)
+
+def test_19_verify_occcurrence_status_open(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+  occurrence.add_responsible(employee)
+  
+  assert occurrence.status == Status.OPEN
+
+def test_20_verify_occcurrence_status_finish(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+  occurrence.add_responsible(employee)
+  
+  occurrence.status = Status.FINISH
+  
+  assert occurrence.status == Status.FINISH
+
+def test_21_verify_occcurrence_status_working(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+  occurrence.add_responsible(employee)
+  
+  occurrence.status = Status.WORKING
+  
+  assert occurrence.status == Status.WORKING
+
+def test_22_verify_occurrence_type(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting", type=Type.TASK)
+
+  assert occurrence.type == Type.TASK
+
+def test_23_verify_occurrence_priority(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting", priority=Priority.HIGH)
+
+  assert occurrence.priority == Priority.HIGH
+
+def test_24_add_invalid_member_to_occurrence(company_with_projects, employee_joao):
+  project = company_with_projects.projects[0]
+
+  with pytest.raises(Exception):
+    project.create_occurrence("2023-10-01", "2023-10-02", "Meeting", employee_joao)
+
+def test_25_project_create_eleventh_employee_occurrence(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  create_10_occurrences(company_with_projects, project, employee)
+    
+  with pytest.raises(Exception):
+    project.create_occurrence("2023-10-11", "2023-10-12", "Occurrence 11", employee)
+
+def test_26_occurrence_add_responsible_with_ten_occurrences(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  create_10_occurrences(company_with_projects, project, employee)
+  
+  occurrence = project.create_occurrence("2023-10-11", "2023-10-12", "Occurrence 11")
+  
+  with pytest.raises(Exception):
+    occurrence.add_responsible(employee)
+
+def test_27_change_occurrence_responsible(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee_1 = company_with_projects.create_employee("Matheus")
+  employee_2 = company_with_projects.create_employee("João")
+  project.add_member(employee_1)
+  project.add_member(employee_2)
+  
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting", employee_1)
+  
+  occurrence.add_responsible(employee_2)
+  
+  assert occurrence.responsible == employee_2
