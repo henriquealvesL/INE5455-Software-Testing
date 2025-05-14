@@ -4,6 +4,13 @@ from models.company import Company
 from models.employee import Employee
 from models.project import Project
 
+def create_10_occurrences(company, project, employee):
+  occurrences = []
+  for i in range(10):
+    occurrence = project.create_occurrence(f"2023-10-{i+1}", f"2023-10-{i+2}", f"Occurrence {i+1}", employee)
+    occurrences.append(occurrence)
+  return occurrences
+
 def test_1_create_company_w():
   company_w = Company("W's SA")
   assert company_w.name == "W's SA"
@@ -83,3 +90,55 @@ def test_13_add_multiple_members_to_project(company_with_projects, employee_joao
   project.add_member(employee_joao)
 
   assert len(project.members) == 2
+
+def test_14_company_create_ocurrence(company_with_projects):
+  project = company_with_projects.projects[0]
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+   
+  assert occurrence.start_date == "2023-10-01"
+  assert occurrence.end_date == "2023-10-02"
+  assert occurrence.description == "Meeting"
+
+def test_15_add_employee_to_ocurrence(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+  occurrence.add_responsible(employee)
+
+  assert employee in project.members
+  assert occurrence.responsible == employee
+
+def test_16_add_employee_to_ocurrence_not_member_of_project(company_with_projects):
+  project = company_with_projects.projects[0]
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+  employee = company_with_projects.create_employee("Matheus")
+
+  with pytest.raises(Exception):
+    occurrence.add_responsible(employee)
+
+def test_17_get_employee_ocurrences(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  occurrence = project.create_occurrence("2023-10-01", "2023-10-02", "Meeting")
+  occurrence_2 = project.create_occurrence("2023-10-03", "2023-10-04", "Workshop")
+  occurrence.add_responsible(employee)
+  occurrence_2.add_responsible(employee)
+  
+  employee_ocurrences = employee.get_occurrences()
+  
+  assert len(employee_ocurrences) == 2
+  assert employee_ocurrences[0].description == "Meeting"
+  assert employee_ocurrences[1].description == "Workshop"
+
+def test_18_add_eleventh_occurrence_to_employee(company_with_projects):
+  project = company_with_projects.projects[0]
+  employee = company_with_projects.create_employee("Matheus")
+  project.add_member(employee)
+  create_10_occurrences(company_with_projects, project, employee)
+  
+  occurrence_11 = project.create_occurrence("2023-10-11", "2023-10-12", "Occurrence 11")
+  
+  with pytest.raises(Exception):
+    employee.add_occurrence(occurrence_11)
