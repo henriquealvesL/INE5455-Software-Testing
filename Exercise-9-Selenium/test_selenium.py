@@ -52,10 +52,10 @@ def test_sum_two_numbers(driver):
 
 def test_sum_and_divide_result_by_10(driver):
   result = calc_sum(driver, 18, 22)
-  division_result = calc_division(driver, result, 5)
+  division_result = calc_division(driver, result, 10)
 
   assert result == 40
-  assert division_result == 8
+  assert division_result == 4
 
 def test_two_operations_check_last_result(driver):
   mult = calc_multiplication(driver, 7, 4)
